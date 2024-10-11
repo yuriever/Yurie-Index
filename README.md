@@ -4,7 +4,7 @@ A Mathematica paclet for converting between indexed variables and symbols.
 
 ## Documentation
 
-<https://yuriever.github.io/symbolic/Yurie__Index/doc/>
+<https://yuriever.github.io/symbolic/Yurie-Index/doc/>
 
 ## Install
 
