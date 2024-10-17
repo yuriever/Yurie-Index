@@ -157,17 +157,17 @@ indexJoinKernel[varList_List,OptionsPattern[]][expr_] :=
             Construct,
                 expr//ReplaceAll[
                     var_Symbol[index_]/;MatchQ[var,varP]&&AtomQ[index]&&indexQ[indexQFunction][indexToString[index]]:>
-                        indexize[var,index]
+                        RuleCondition@indexize[var,index]
                 ],
             Subscript,
                 expr//ReplaceAll[
                     Subscript[var_,index_]/;MatchQ[var,varP]&&AtomQ[index]&&indexQ[indexQFunction][indexToString[index]]:>
-                        indexize[var,index]
+                        RuleCondition@indexize[var,index]
                 ],
             Superscript,
                 expr//ReplaceAll[
                     Superscript[var_,index_]/;MatchQ[var,varP]&&AtomQ[index]&&indexQ[indexQFunction][indexToString[index]]:>
-                        indexize[var,index]
+                        RuleCondition@indexize[var,index]
                 ]
         ]
     ]//Catch;
