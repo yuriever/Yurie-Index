@@ -158,11 +158,35 @@ VerificationTest[
 ]
 
 VerificationTest[
+	indexSplit[x][Hold[x1 + x2]]
+	,
+	Hold[x[1] + x[2]]
+	,
+	TestID->"19-Index.nb"
+]
+
+VerificationTest[
+	indexSplit[x][HoldComplete[x1]]
+	,
+	HoldComplete[x[1]]
+	,
+	TestID->"20-Index.nb"
+]
+
+VerificationTest[
+	indexSplit[x][Inactive[f][x1]]
+	,
+	Inactive[f][x[1]]
+	,
+	TestID->"21-Index.nb"
+]
+
+VerificationTest[
 	indexToZero[x][1][x1]
 	,
 	0
 	,
-	TestID->"19-Index.nb"
+	TestID->"22-Index.nb"
 ]
 
 VerificationTest[
@@ -170,7 +194,7 @@ VerificationTest[
 	,
 	x2
 	,
-	TestID->"20-Index.nb"
+	TestID->"23-Index.nb"
 ]
 
 VerificationTest[
@@ -178,7 +202,7 @@ VerificationTest[
 	,
 	x12
 	,
-	TestID->"21-Index.nb"
+	TestID->"24-Index.nb"
 ]
 
 VerificationTest[
@@ -186,7 +210,7 @@ VerificationTest[
 	,
 	x1 - x2
 	,
-	TestID->"22-Index.nb"
+	TestID->"25-Index.nb"
 ]
 
 VerificationTest[

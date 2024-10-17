@@ -193,7 +193,7 @@ indexSplitKernel[varList_List,OptionsPattern[]][expr_] :=
         (*kernel*)
         expr//ReplaceAll[
             symbol_Symbol:>
-                symbolFromStringOrStringExpression@StringReplace[
+                RuleCondition@symbolFromStringOrStringExpression@StringReplace[
                     ToString@symbol,
                     StartOfString~~Shortest[var__]~~Longest[index__]~~EndOfString/;StringMatchQ[var,varP]&&indexQ[indexQFunction][index]:>
                         formatFunction[ToExpression@var,ToExpression@index]
