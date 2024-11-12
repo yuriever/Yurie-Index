@@ -60,10 +60,10 @@ Begin["`Private`"];
 
 
 indexize[var_,index_] :=
-    ToExpression[ToString[var]<>indexToString[index]];
+    ToExpression[ToString[var,FormatType->InputForm]<>indexToString[index]];
 
 indexize[{var_,index_}] :=
-    ToExpression[ToString[var]<>indexToString[index]];
+    ToExpression[ToString[var,FormatType->InputForm]<>indexToString[index]];
 
 
 (* ::Subsubsection:: *)
@@ -187,14 +187,14 @@ indexSplitKernel[varList_List,OptionsPattern[]][expr_] :=
             Message[indexSplit::optnotmatch];
             Throw[expr]
         ];
-        varP = Alternatives@@Map[ToString,varList];
+        varP = Alternatives@@Map[ToString[#,FormatType->InputForm]&,varList];
         formatFunction = OptionValue["IndexPosition"];
         indexQFunction = OptionValue["IndexType"];
         (*kernel*)
         expr//ReplaceAll[
             symbol_Symbol:>
                 RuleCondition@symbolFromStringOrStringExpression@StringReplace[
-                    ToString@symbol,
+                    ToString[symbol,FormatType->InputForm],
                     StartOfString~~Shortest[var__]~~Longest[index__]~~EndOfString/;StringMatchQ[var,varP]&&indexQ[indexQFunction][index]:>
                         formatFunction[ToExpression@var,ToExpression@index]
                 ]
@@ -284,7 +284,7 @@ padSymbolToRule[heads__] :=
 (*indexize symbols with indices.*)
 
 indexize2[head_,indexList_List] :=
-    Map[ToExpression[ToString@head<>indexToString@#]&,indexList];
+    Map[ToExpression[ToString[head,FormatType->InputForm]<>indexToString@#]&,indexList];
 
 
 (* ::Subsection:: *)

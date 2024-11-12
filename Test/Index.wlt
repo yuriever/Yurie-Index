@@ -238,6 +238,38 @@ VerificationTest[
 ]
 
 VerificationTest[
+	ToExpression["Format[phat]:=OverHat[p]"]
+	,
+	Null
+	,
+	TestID->"29-Index.nb"
+]
+
+VerificationTest[
+	FullForm[indexize[phat, 1]]
+	,
+	FullForm[phat1]
+	,
+	TestID->"30-Index.nb"
+]
+
+VerificationTest[
+	FullForm[indexSplit[phat, "IndexPosition" -> Subscript][phat1]]
+	,
+	FullForm[Subscript[phat, 1]]
+	,
+	TestID->"31-Index.nb"
+]
+
+VerificationTest[
+	ClearAll[phat]
+	,
+	Null
+	,
+	TestID->"32-Index.nb"
+]
+
+VerificationTest[
 	ClearAll["`*"];
 	End[]
 	,
